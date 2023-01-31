@@ -3,7 +3,12 @@ import { Product } from '../../types/Product';
 import { Close } from '../Icons/Close';
 
 import { Text } from '../Text';
-import { Image, CloseButton, ModalBody, Header, IngredientsContainer, Ingredient } from './styles';
+import { Image,
+  CloseButton,
+  ModalBody,
+  Header,
+  IngredientsContainer,
+  Ingredient } from './styles';
 
 interface ProductModalProps {
   visible: boolean;
@@ -49,10 +54,13 @@ export function ProductModal({ visible, onClose, product }: ProductModalProps) {
             data={product.ingredients}
             keyExtractor={ingredient => ingredient._id}
             showsVerticalScrollIndicator={false}
+            style={{ marginTop: 16 }}
             renderItem={({ item: ingredient }) => (
               <Ingredient>
                 <Text>{ingredient.icon}</Text>
-                <Text>{ingredient.name}</Text>
+                <Text size={14} color='#666' style={{ marginLeft: 20 }}>
+                  {ingredient.name}
+                </Text>
               </Ingredient>
             )}
           />

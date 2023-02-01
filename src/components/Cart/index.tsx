@@ -28,7 +28,7 @@ export function Cart({ cartItems }: CartProps) {
         data={cartItems}
         keyExtractor={cartItem => cartItem.product._id}
         showsVerticalScrollIndicator={false}
-        style={{ marginBottom: 20 }}
+        style={{ marginBottom: 20, maxHeight: 150 }}
         renderItem={({ item: cartItem }) => (
           <Item>
             <ProductContainer>

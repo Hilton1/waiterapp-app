@@ -19,9 +19,9 @@ import { Cart } from '../components/Cart';
 import { CartItem } from '../types/CartItem';
 import { Product } from '../types/Product';
 
-import { products as mockProducts } from '../mocks/products';
 import { Empty } from '../components/Icons/Empty';
 import { Text } from '../components/Text';
+import { Category } from '../types/Category';
 
 
 export function Main() {
@@ -29,7 +29,8 @@ export function Main() {
   const [selectedTable, setSelectedTable] = useState('');
   const [cartItems, setCartItems] = useState<CartItem[]>([]);
   const [isLoading] = useState(false);
-  const [products] = useState<Product[]>(mockProducts);
+  const [products] = useState<Product[]>([]);
+  const [categories] = useState<Category[]>([]);
 
   function handleSaveTable(table: string) {
     setSelectedTable(table);
@@ -110,7 +111,9 @@ export function Main() {
         {!isLoading && (
           <>
             <CategoriesContainer>
-              <Categories />
+              <Categories
+                categories={categories}
+              />
             </CategoriesContainer>
 
             {products.length > 0 ? (

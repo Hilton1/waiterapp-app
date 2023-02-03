@@ -30,12 +30,16 @@ export function Main() {
   const [selectedTable, setSelectedTable] = useState('');
   const [cartItems, setCartItems] = useState<CartItem[]>([]);
   const [isLoading] = useState(false);
-  const [products] = useState<Product[]>([]);
+  const [products, setProducts] = useState<Product[]>([]);
   const [categories, setCategories] = useState<Category[]>([]);
 
   useEffect(() => {
     axios.get('http://10.0.0.117:3001/categories').then((response) => {
       setCategories(response.data);
+    });
+
+    axios.get('http://10.0.0.117:3001/products').then((response) => {
+      setProducts(response.data);
     });
   }, []);
 

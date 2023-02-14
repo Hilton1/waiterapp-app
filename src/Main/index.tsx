@@ -1,5 +1,4 @@
 import { ActivityIndicator } from 'react-native';
-import axios from 'axios';
 
 import { Container,
   CategoriesContainer,
@@ -24,6 +23,7 @@ import { Empty } from '../components/Icons/Empty';
 import { Text } from '../components/Text';
 import { Category } from '../types/Category';
 
+import { api } from '../utils/api';
 
 export function Main() {
   const [isTableModalVisible, setIsTableModalVisible] = useState(false);
@@ -35,8 +35,8 @@ export function Main() {
 
   useEffect(() => {
     Promise.all([
-      axios.get('http://10.0.0.117:3001/categories'),
-      axios.get('http://10.0.0.117:3001/products'),
+      api.get('/categories'),
+      api.get('/products'),
     ]).then(([categoriesResponse, productsResponse]) => {
       setCategories(categoriesResponse.data);
       setProducts(productsResponse.data);

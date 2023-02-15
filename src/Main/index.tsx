@@ -173,24 +173,25 @@ export function Main() {
 
       </Container>
       <Footer>
-        <FooterContainer>
-          {!selectedTable && (
-            <Button
-              onPress={() => setIsTableModalVisible(true)}
-              disabled={isLoading}
-            >
+        {/* <FooterContainer> */}
+        {!selectedTable && (
+          <Button
+            onPress={() => setIsTableModalVisible(true)}
+            disabled={isLoading}
+          >
             Novo Pedido
-            </Button>
-          )}
-          {selectedTable && (
-            <Cart
-              cartItems={cartItems}
-              onAdd={handleAddToCart}
-              onDecrement={handleDecrementCartItem}
-              onConfirmOrder={handleResetOrder}
-            />
-          )}
-        </FooterContainer>
+          </Button>
+        )}
+        {selectedTable && (
+          <Cart
+            cartItems={cartItems}
+            onAdd={handleAddToCart}
+            onDecrement={handleDecrementCartItem}
+            onConfirmOrder={handleResetOrder}
+            selectedTable={selectedTable}
+          />
+        )}
+        {/* </FooterContainer> */}
       </Footer>
 
       <TableModal
